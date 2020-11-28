@@ -1,19 +1,23 @@
 package bluestack.games_tv_automation;
 
-import java.util.Map;
-
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 
 import bluestack.games_tv_keywords.Games_tv_actions;
+import utilityClasses.CSVFileWriter;
 import utilityClasses.ConfigPropertyReader;
 import utilityClasses.RestClient;
+
+//sessionInitiator is like jam between the Action classes and tes classes
+//rather than initializing Actions classes in each test class, we will initialize it at one place
+//Initialize driver here as per he browser preference defined in Config.properties file
 
 public class SessionInitiator {
 	private WebDriver driver;
 	public Games_tv_actions games_tv_homepage;
 	public RestClient restClient;
+	public CSVFileWriter csvFileWriter;
 	
 	public SessionInitiator() {
 		configureDriver();
@@ -60,6 +64,7 @@ public class SessionInitiator {
 	
 	public void initPage() {
 		restClient= new RestClient();
+		csvFileWriter= new CSVFileWriter();
 		games_tv_homepage= new  Games_tv_actions(driver);
 	}
 }

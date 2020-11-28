@@ -2,8 +2,11 @@ package bluestack.games_tv_automation;
 
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
-import org.testng.annotations.BeforeMethod;
 
+//BaseTest will be super class of all tests class.
+//It will have all the default BeforeClass method for setting up base conditions and data
+//AfterClass to handle closing session/ window etc
+//Initialize SessionInitiator object here to be used by all the child test classes
 public class BaseTest {
 	
 	SessionInitiator test;

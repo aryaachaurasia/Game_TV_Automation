@@ -11,6 +11,10 @@ import org.testng.Assert;
 import pageObjects.BasicUI;
 import utilityClasses.RestClient;
 
+//implement all the function/ Actions class here
+//test class will call functions from here
+//Initialize this class in SessionInitiator class
+
 public class Games_tv_actions extends BasicUI {
 
 	RestClient restClient=new RestClient();
@@ -36,35 +40,26 @@ public class Games_tv_actions extends BasicUI {
 		int noOfGames=elements.size();
 		for(int i=1;i<=noOfGames; i++) {
 			element("gameTile", ""+i).click();
-			ArrayList<String> gameDetails= getGameDetails();
+			ArrayList<String> gameDetails= getGameDetails(i);
 			allGamesDetails.add(gameDetails);
 			waitForsec(2);
 			navigateToBackPage();
 			waitForsec(2);
 		}
-//		for(WebElement gameTile: elements) {
-//			gameTile.click();
-//			ArrayList<String> gameDetails= getGameDetails();
-//			allGamesDetails.add(gameDetails);
-//			navigateToBackPage();
-//			waitForsec(2);
-//		}
-		
 		return allGamesDetails;
 	}
 
-	private ArrayList<String> getGameDetails() {
+	private ArrayList<String> getGameDetails(int i) {
 		ArrayList<String> gameDetails=new ArrayList<String>();
 		String gameName=getGameName();
 		String gamePageURL=getGamePageURL();
 		int gamePageHTTPStatus= getGamePageHTTPStatus(gamePageURL);
 		String countTournaments=getTournaments();
+		gameDetails.add(i+"");
 		gameDetails.add(gameName);
 		gameDetails.add(gamePageURL);
 		gameDetails.add(gamePageHTTPStatus+"");
 		gameDetails.add(countTournaments);
-		//add other asked details
-		System.out.println(gameDetails);
 		return gameDetails;
 		
 	}
@@ -79,11 +74,11 @@ public class Games_tv_actions extends BasicUI {
 
 	private String getGameName() {
 		String gameName=element("heading_gamesName").getText();
-		return gameName.replace("Tournament", "");
+		return gameName.replace("Tournaments", "");
 	}
 
 	private String getTournaments() {
-		String noOfTournaments=element("count_tournament").getText();
+		String noOfTournaments=element("count_tournament").getText().replaceAll(",", "");
 		System.out.println(noOfTournaments);
 		return noOfTournaments;
 	}

@@ -3,7 +3,7 @@ package utilityClasses;
 import java.io.FileReader;
 import java.util.Properties;
 
-
+//to read config reader
 public class ConfigPropertyReader {
 
 	    private static String defaultConfigFile = "./Config.properties";

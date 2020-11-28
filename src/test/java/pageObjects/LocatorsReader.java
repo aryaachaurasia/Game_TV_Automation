@@ -9,9 +9,10 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+//to read Locator file so as 
+//different locator file to add all the locators at one place
+
 public class LocatorsReader {
-	//1)read spec file 
-	//2)get particualr element and store selector type and value
 
 	private static Map<String, List<String>> readSpecFile(){
 		Map<String, List<String>> pageObjects = new HashMap<String, List<String>>();
@@ -38,12 +39,5 @@ public class LocatorsReader {
 		Map<String, List<String>> pageObjects=readSpecFile();
 		return pageObjects.get(elementName);
 	}
-
-	//	public static void main(String argsp[]) throws IOException {
-	//		Map<String, List<String>> pageObjects=getElement();
-	//		for(Map.Entry<String, List<String>> entry: pageObjects.entrySet()) {
-	//			System.out.println(entry.getKey()+ "--->"+entry.getValue());
-	//		}
-	//	}
 
 }

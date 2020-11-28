@@ -8,6 +8,9 @@ import org.openqa.selenium.TimeoutException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
+//super class of all the Action classes
+//define all the most used selenium functions here
+
 public class BasicUI {
 	
 	protected WebDriver driver;

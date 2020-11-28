@@ -1,6 +1,8 @@
 package utilityClasses;
 import io.restassured.RestAssured;
 
+//to obtain HTTP status of any link using Rest Assured
+
 public class RestClient {
 
 	public int httpResponseCodeViaGet(String url) {
